@@ -1,6 +1,30 @@
+import { useEffect, useState } from "react";
+
 function Foods () {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetchData();
+    }, [])
+    const fetchData = async () => {
+        const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+            .then((res) => res.json());
+        console.log('res: ', response.categories[0].strCategoryThumb);
+        setData(response.categories);
+    }
     return (
-        <div>Food</div>
+        <div>
+            {data.map((dt) => (
+                <div key={dt.idCategory}>
+                    <h1>
+                    {dt.strCategory}
+                    </h1>
+                    <p>
+                    {dt.strCategoryDescription}
+                    </p>
+                    <img src={dt.strCategoryThumb} alt="Food" />
+                </div>
+            ))}
+        </div>
     )
 }
 
