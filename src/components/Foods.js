@@ -6,12 +6,14 @@ function Foods () {
     useEffect(() => {
         fetchData();
     }, [])
+    
     const fetchData = async () => {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             .then((res) => res.json());
         console.log('res: ', response.categories);
         setData(response.categories);
     }
+
     return (
         <div>
             {data.map((dt) => (

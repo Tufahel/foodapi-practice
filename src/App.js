@@ -3,7 +3,9 @@ import Foods from './components/Foods';
 
 function App() {
   return (
-    <Foods />
+    <>
+      <Foods />
+    </>
   );
 }
 
