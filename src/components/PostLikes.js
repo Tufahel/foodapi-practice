@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function PostLikes (props) {
     const {id} = props;
-    const url = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FGfLuFSlCkJb0ayRV4eC/likes";
-    const [likes, setLikes] = useState([]);
+    const url = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nolPA6A8i8n8Qi2zMdgc/likes";
     const [likeCount, setLikeCount] = useState(0);
 
     useEffect(() => {
@@ -11,26 +10,29 @@ function PostLikes (props) {
     }, []);
 
     const fetchLikes = async () => {
-        const url = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FGfLuFSlCkJb0ayRV4eC/likes";
         const response = await fetch(url)
-            .then((res) => res.json());
-        console.log('res likes: ', response[id-1]);
-        setLikes(response);
-        if(likes[id-1] !== undefined)
-            setLikeCount(likes[id-1].likes);
+            .then((res) => res.json())
+        console.log('res id likes: ', id, id, response[id]);
+        console.log('id, likes: ', response);
+        setLikeCount(response[id].likes);
     }
 
-    const postLike = (id, e) => {
-        e.preventDefault();
+    const postLike = (id) => {
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify({item_id: id}),
+            body: JSON.stringify({item_id: id+1}),
             headers: {'Content-Type': 'application/json'},
         });
+        console.log('postLike id: ', id);
+        // localStorage.setItem('id', id);
+        fetchLikes();
+        console.log('likeCount: ', likeCount);
     }
+
     return (
         <div>
             <div>
+                <p>changeable id: {id}</p>
                 <p>{likeCount}</p>
                 <button type="button" onClick={()=>postLike(id)}>LikeLike</button>
             </div>

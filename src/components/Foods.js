@@ -25,7 +25,8 @@ function Foods () {
                     {dt.strCategoryDescription}
                     </p>
                     <img src={dt.strCategoryThumb} alt="Food" />
-                    <PostLikes id={dt.idCategory}/>
+                    <p>id: {dt.idCategory - 1}</p>
+                    <PostLikes id={parseInt(dt.idCategory)-1}/>
                 </div>
             ))}
         </div>
