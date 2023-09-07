@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function PostLikes (props) {
+function Likes (props) {
     const {id} = props;
     const url = "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/nolPA6A8i8n8Qi2zMdgc/likes";
     const [likeCount, setLikeCount] = useState(0);
@@ -40,4 +40,4 @@ function PostLikes (props) {
     )
 }
 
-export default PostLikes;
+export default Likes;
