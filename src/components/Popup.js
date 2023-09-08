@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "../styles/Popup.css";
 import Modal from "react-overlays/Modal";
+import Comments from "./Comments";
 
-function Popup() {
+function Popup(props) {
+    const { id } = props;
+
     const [showModal, setShowModal] = useState(false);
 
     const renderBackdrop = (props) => <div className="backdrop" {...props} />;
@@ -32,9 +35,7 @@ function Popup() {
                             </span>
                         </div>
                     </div>
-                    <div className="modal-desc">
-                        <p>Modal body contains text.</p>
-                    </div>
+                    <Comments id={id} />
                     <div className="modal-footer">
                         <button className="secondary-button" onClick={handleClose}>
                             Close
