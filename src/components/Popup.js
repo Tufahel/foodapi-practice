@@ -2,9 +2,11 @@ import { useState } from "react";
 import "../styles/Popup.css";
 import Modal from "react-overlays/Modal";
 import Comments from "./Comments";
+import Reservations from "./Reservations";
 
 function Popup(props) {
-    const { id } = props;
+    const { id, flag } = props;
+    console.log(flag);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -35,7 +37,7 @@ function Popup(props) {
                             </span>
                         </div>
                     </div>
-                    <Comments id={id} />
+                    {flag ? <Comments id={id} /> : <Reservations id={id} />}
                     <div className="modal-footer">
                         <button className="secondary-button" onClick={handleClose}>
                             Close

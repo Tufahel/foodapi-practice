@@ -28,7 +28,8 @@ function Foods () {
                     <img src={dt.strCategoryThumb} alt="Food" />
                     <p>id: {dt.idCategory - 1}</p>
                     <Likes id={parseInt(dt.idCategory)-1}/>
-                    <Popup id={parseInt(dt.idCategory)-1}/>
+                    <Popup id={parseInt(dt.idCategory)-1} flag={true}/>
+                    <Popup id={parseInt(dt.idCategory)-1} flag={false}/>
                 </div>
             ))}
         </div>
